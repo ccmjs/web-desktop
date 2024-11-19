@@ -13,6 +13,7 @@ ccm.files[ 'ccm.window.js' ] = {
     "app": [ "ccm.start", "https://ccmjs.github.io/akless-components/quiz/ccm.quiz.min.js", ["ccm.get",{"name":"dms2-configs","url":"https://ccm2.inf.h-brs.de"},["quiz","1581493641369X7741789624303226"]] ],
     "context": "././libs/context/ccm.context.js",
     "css": [ "ccm.load", "././window/resources/styles.css" ],
+    "handover_app": "././libs/handover_app/ccm.handover_app.js",
     "helper": [ "ccm.load", { "url": "././libs/ccm/helper.js", "type": "module" } ],
     "html": {
       "inner": [
@@ -76,9 +77,11 @@ ccm.files[ 'ccm.window.js' ] = {
 
       // get meta data of app from DMS
       meta = this.app.ignore?.meta && await ccm.helper.solveDependency(this.app.ignore.meta);
+      console.log(meta);
 
       // get component data of app from DMS
       component = meta && await ccm.get({name: 'dms2-components', url: 'https://ccm2.inf.h-brs.de'}, meta.component);
+      console.log(component);
 
       // render main HTML structure
       this.element.innerHTML = '';
@@ -132,9 +135,7 @@ ccm.files[ 'ccm.window.js' ] = {
       },
 
       /** when the share button is clicked */
-      onShare: () => {
-
-      },
+      onShare: () => this.open(this.handover_app, { tool: this.app.component.url, ignore: { config: { store: meta.ignore.config[1], key: meta.ignore.config[2]} } }),
 
       /** when the close button is clicked */
       onClose: () => {

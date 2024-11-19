@@ -1,0 +1,26 @@
+/**
+ * @overview default layout of ccm component for handover of an app
+ * @author André Kless <andre.kless@web.de> 2019
+ * @license The MIT License (MIT)
+ */
+
+#element {
+  background-color: #fff;
+  padding: 0.5em;
+  overflow: auto;
+}
+
+header {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+header > * {
+  padding-left: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+*[data-hidden] {
+  display: none !important;
+}
