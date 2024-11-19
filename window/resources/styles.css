@@ -1,0 +1,56 @@
+/**
+ * @overview Default layout of <i>ccmjs</i>-based web component for a draggable app window.
+ * @author André Kless <andre.kless@web.de.de> 2024
+ * @license The MIT License (MIT)
+ */
+
+#element {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0.5em;
+  z-index: 1000000;
+  font-size: initial;
+  min-width: min-content;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem;
+  background-color: #f0f0f0;
+  border: 1px solid black;
+  border-radius: 0.5rem 0.5rem 0 0;
+  white-space: nowrap;
+  cursor: move;
+}
+
+header .draggable {
+  cursor: move;
+  width: 100%;
+  padding-right: 1rem;
+  height: 1rem;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+}
+
+header img {
+  padding: 0.2rem;
+  cursor: pointer;
+  margin: 0.2rem;
+  border-radius: 0.2rem;
+  height: 1rem;
+}
+
+header img:hover {
+  background-color: white;
+}
+
+main:not(:empty) {
+  border: 1px solid black;
+  border-top: none;
+}
