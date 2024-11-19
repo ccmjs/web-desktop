@@ -94,7 +94,7 @@ ccm.files[ 'ccm.window.js' ] = {
       // make window draggable and resizable
       new Moveable( document.body, {
         target: this.element,
-        dragTarget: this.element.querySelector( '.draggable' ),
+        //dragTarget: this.element.querySelector( '.draggable' ),
         draggable: true,
         resizable: true,
         hideDefaultLines: true,
