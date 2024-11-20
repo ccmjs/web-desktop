@@ -10,18 +10,17 @@ ccm.files[ 'ccm.window.js' ] = {
   name: 'window',
   ccm: '././libs/ccm/ccm.js',
   config: {
-    "app": [ "ccm.start", "https://ccmjs.github.io/akless-components/quiz/ccm.quiz.min.js", ["ccm.get",{"name":"dms2-configs","url":"https://ccm2.inf.h-brs.de"},["quiz","1581493641369X7741789624303226"]] ],
+    "app": ["ccm.start", "https://ccmjs.github.io/akless-components/blank_blank/ccm.blank_blank.js"],
     "context": "././libs/context/ccm.context.js",
-    "css": [ "ccm.load", "././window/resources/styles.css" ],
+    "css": ["ccm.load", "././window/resources/styles.css"],
     "handover_app": "././libs/handover_app/ccm.handover_app.js",
-    "helper": [ "ccm.load", { "url": "././libs/ccm/helper.js", "type": "module" } ],
     "html": {
       "inner": [
         {
           "tag": "header",
           "class": "draggable",
           "inner": [
-            { "inner": "%title%" },
+            {"inner": "%title%"},
             {
               "tag": "nav",
               "inner": [
@@ -33,21 +32,25 @@ ccm.files[ 'ccm.window.js' ] = {
                 },
                 {
                   "tag": "img",
+                  "id": "data",
                   "src": "././window/resources/icons/data.svg",
                   "onclick": "%onData%",
                 },
                 {
                   "tag": "img",
+                  "id": "edit",
                   "src": "././window/resources/icons/edit.svg",
                   "onclick": "%onEdit%",
                 },
                 {
                   "tag": "img",
+                  "id": "info",
                   "src": "././window/resources/icons/info.svg",
                   "onclick": "%onInfo%",
                 },
                 {
                   "tag": "img",
+                  "id": "share",
                   "src": "././window/resources/icons/share.svg",
                   "onclick": "%onShare%",
                 },
@@ -60,10 +63,11 @@ ccm.files[ 'ccm.window.js' ] = {
             },
           ]
         },
-        { "tag": "main" },
+        {"tag": "main"},
       ]
     },
-    "libs": [ "ccm.load", "././libs/moveable/moveable.js" ],
+    "libs": ["ccm.load", "././libs/moveable/moveable.js"],
+    "title": "App Window",
   },
   Instance: function () {
 
@@ -85,7 +89,7 @@ ccm.files[ 'ccm.window.js' ] = {
 
       // render main HTML structure
       this.element.innerHTML = '';
-      this.element.appendChild(this.ccm.helper.html(this.html, {title: meta || component ? (component?.title || meta.component.toUpperCase()) + " | " + meta.title : "", ...this.events}));
+      this.element.appendChild(this.ccm.helper.html(this.html, {title: meta || component ? (component?.title || meta.component.toUpperCase()) + " | " + meta.title : this.title || "", ...this.events}));
 
       // render app in window
       this.element.querySelector('main').appendChild(this.app.root);
@@ -93,6 +97,16 @@ ccm.files[ 'ccm.window.js' ] = {
       // app is context app? => remove context button
       if (this.app.component.url === this.context)
         this.element.querySelector('#context').parentElement.removeChild(this.element.querySelector('#context'));
+
+      // no app component data? => remove edit button
+      !component && this.element.querySelector('#edit').parentElement.removeChild(this.element.querySelector('#edit'));
+
+      // no app metadata? => remove data, info and share button
+      if (!meta) {
+        this.element.querySelector('#data').parentElement.removeChild(this.element.querySelector('#data'));
+        this.element.querySelector('#info').parentElement.removeChild(this.element.querySelector('#info'));
+        this.element.querySelector('#share').parentElement.removeChild(this.element.querySelector('#share'));
+      }
 
       // make window draggable and resizable
       new Moveable( document.body, {
@@ -135,7 +149,7 @@ ccm.files[ 'ccm.window.js' ] = {
       },
 
       /** when the share button is clicked */
-      onShare: () => this.open(this.handover_app, { tool: this.app.component.url, ignore: { config: { store: meta.ignore.config[1], key: meta.ignore.config[2]} } }),
+      onShare: () => meta && this.open(this.handover_app, { tool: this.app.component.url, ignore: { config: { store: meta.ignore.config[1], key: meta.ignore.config[2]} } }),
 
       /** when the close button is clicked */
       onClose: () => {
