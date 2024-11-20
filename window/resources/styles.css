@@ -12,6 +12,7 @@
   z-index: 1000000;
   font-size: initial;
   min-width: min-content;
+  background-color: white;
 }
 
 header {

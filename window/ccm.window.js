@@ -10,7 +10,7 @@ ccm.files[ 'ccm.window.js' ] = {
   name: 'window',
   ccm: '././libs/ccm/ccm.js',
   config: {
-    "app": ["ccm.start", "https://ccmjs.github.io/akless-components/blank_blank/ccm.blank_blank.js"],
+    "app": ["ccm.start", "././folder/ccm.folder.js"],
     "context": "././libs/context/ccm.context.js",
     "css": ["ccm.load", "././window/resources/styles.css"],
     "handover_app": "././libs/handover_app/ccm.handover_app.js",

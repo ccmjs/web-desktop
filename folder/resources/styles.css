@@ -1,0 +1,26 @@
+/**
+ * @overview Default layout of <i>ccmjs</i>-based web component for a draggable app window.
+ * @author André Kless <andre.kless@web.de.de> 2024
+ * @license The MIT License (MIT)
+ */
+
+main {
+  display: flex;
+}
+
+.app {
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.app:hover {
+  background-color: #f0f0f0;
+}
+
+img {
+  width: 64px;
+  height: 64px;
+}
