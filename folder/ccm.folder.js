@@ -11,10 +11,10 @@ ccm.files[ 'ccm.folder.js' ] = {
   ccm: '././libs/ccm/ccm.js',
   config: {
     "apps": [
-      ["ccm.start", "././folder/ccm.folder.js", {
+      ["ccm.instance", "././folder/ccm.folder.js", {
         apps: [
-          ["ccm.start", "https://ccmjs.github.io/akless-components/blank/ccm.blank.js"],
-          ["ccm.start", "https://ccmjs.github.io/akless-components/blank_blank/ccm.blank_blank.js"],
+          ["ccm.instance", "https://ccmjs.github.io/akless-components/blank/ccm.blank.js"],
+          ["ccm.instance", "https://ccmjs.github.io/akless-components/blank_blank/ccm.blank_blank.js"],
         ],
         title: "Unterordner",
         ignore: {
@@ -25,9 +25,9 @@ ccm.files[ 'ccm.folder.js' ] = {
           }
         }
       }],
-      ["ccm.start", "https://ccmjs.github.io/akless-components/blank/ccm.blank.js"],
-      ["ccm.start", "https://ccmjs.github.io/akless-components/blank_blank/ccm.blank_blank.js"],
-      ["ccm.start", "https://ccmjs.github.io/akless-components/quiz/ccm.quiz.min.js", ["ccm.get", { "name": "dms2-configs", "url": "https://ccm2.inf.h-brs.de" }, ["quiz", "1581493641369X7741789624303226"]]],
+      ["ccm.instance", "https://ccmjs.github.io/akless-components/blank/ccm.blank.js"],
+      ["ccm.instance", "https://ccmjs.github.io/akless-components/blank_blank/ccm.blank_blank.js"],
+      ["ccm.instance", "https://ccmjs.github.io/akless-components/quiz/ccm.quiz.min.js", ["ccm.get", { "name": "dms2-configs", "url": "https://ccm2.inf.h-brs.de" }, ["quiz", "1581493641369X7741789624303226"]]],
     ],
     "css": [ "ccm.load", "././folder/resources/styles.css" ],
     "helper": [ "ccm.load", { "url": "././libs/ccm/helper.js", "type": "module" } ],
